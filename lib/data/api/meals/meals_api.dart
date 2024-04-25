@@ -22,21 +22,19 @@ class MealsApi {
     );
   }
 
+    Future<Response> getMealsByCategory(String category) async {
+    return DioClient.dio.get(
+      ApiConfig.filterMealsByCategory,
+      queryParameters: {
+        'c': category,
+      },
+    );
+  }
+
   Future<Response> getRandomMeal() async {
     return DioClient.dio.get(
       ApiConfig.randomMeal,
     );
   }
 
-  Future<Response> addMeal(Meal meal) async {
-    throw UnimplementedError();
-  }
-
-  Future<Response> updateMeal(Meal meal) async {
-    throw UnimplementedError();
-  }
-
-  Future<Response> deleteMeal(Meal meal) async {
-    throw UnimplementedError();
-  }
 }
