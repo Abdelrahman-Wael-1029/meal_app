@@ -20,15 +20,4 @@ class CategoryRepository {
     }
   }
 
-  Future<List<Category>> getMealsByCategory(String category) async {
-    try {
-      final response = await categoryApi.getMealsByCategory(category);
-      return (response.data['meals'] as List)
-          .map((e) => Category.fromJson(e))
-          .toList();
-    } catch (e) {
-      debugPrint(e.toString());
-      return [];
-    }
-  }
 }

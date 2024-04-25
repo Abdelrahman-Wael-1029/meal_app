@@ -32,6 +32,18 @@ class MealRepository {
     }
   }
 
+  Future<List<Meal>> getMealsByCategory(String category) async {
+    try {
+      final response = await mealsApi.getMealsByCategory(category);
+      return (response.data['meals'] as List)
+          .map((e) => Meal.fromJson(e))
+          .toList();
+    } catch (e) {
+      debugPrint(e.toString());
+      return [];
+    }
+  }
+
   Future<Meal> getRandomMeal() async {
     try {
       final response = await mealsApi.getRandomMeal();
@@ -43,35 +55,4 @@ class MealRepository {
       rethrow;
     }
   }
-
-  Future<void> addMeal(Meal meal) async {
-    try {
-      await mealsApi.addMeal(meal);
-    } catch (e) {
-      if (kDebugMode) {
-        print(e);
-      }
-    }
-  }
-
-  Future<void> updateMeal(Meal meal) async {
-    try {
-      await mealsApi.updateMeal(meal);
-    } catch (e) {
-      if (kDebugMode) {
-        print(e);
-      }
-    }
-  }
-
-  Future<void> deleteMeal(Meal meal) async {
-    try {
-      await mealsApi.deleteMeal(meal);
-    } catch (e) {
-      if (kDebugMode) {
-        print(e);
-      }
-    }
-  }
-  
 }

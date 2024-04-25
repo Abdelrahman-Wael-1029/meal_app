@@ -7,15 +7,5 @@ class CategoryApi {
     return DioClient.dio.get(
       ApiConfig.listCategories,
     );
-  }
-
-  Future<Response> getMealsByCategory(String category) async {
-    return DioClient.dio.get(
-      ApiConfig.filterMealsByCategory,
-      queryParameters: {
-        'c': category,
-      },
-    );
-  }
-  
+  }  
 }
