@@ -7,52 +7,30 @@ class MealRepository {
   MealRepository(this.mealsApi);
 
   Future<List<Meal>> getMeals() async {
-    try {
-      final response = await mealsApi.getMeals();
-      return (response.data['meals'] as List)
-          .map((e) => Meal.fromJson(e))
-          .toList();
-    } catch (e) {
-      if (kDebugMode) {
-        print(e);
-      }
+    final response = await mealsApi.getMeals();
+    if (response.data == []) {
       return [];
     }
+
+    return (response.data['meals'] as List)
+        .map((e) => Meal.fromJson(e))
+        .toList();
   }
 
   Future<Meal> getMealById(String id) async {
-    try {
-      final response = await mealsApi.getMealById(id);
-      return Meal.fromJson(response.data['meals'][0]);
-    } catch (e) {
-      if (kDebugMode) {
-        print(e);
-      }
-      rethrow;
-    }
+    final response = await mealsApi.getMealById(id);
+    return Meal.fromJson(response.data['meals'][0]);
   }
 
   Future<List<Meal>> getMealsByCategory(String category) async {
-    try {
-      final response = await mealsApi.getMealsByCategory(category);
-      return (response.data['meals'] as List)
-          .map((e) => Meal.fromJson(e))
-          .toList();
-    } catch (e) {
-      debugPrint(e.toString());
-      return [];
-    }
+    final response = await mealsApi.getMealsByCategory(category);
+    return (response.data['meals'] as List)
+        .map((e) => Meal.fromJson(e))
+        .toList();
   }
 
   Future<Meal> getRandomMeal() async {
-    try {
-      final response = await mealsApi.getRandomMeal();
-      return Meal.fromJson(response.data['meals'][0]);
-    } catch (e) {
-      if (kDebugMode) {
-        print(e);
-      }
-      rethrow;
-    }
+    final response = await mealsApi.getRandomMeal();
+    return Meal.fromJson(response.data['meals'][0]);
   }
 }

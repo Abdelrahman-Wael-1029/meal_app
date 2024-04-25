@@ -22,7 +22,7 @@ class Meal {
       price: 0.0,
       category: json['strCategory'],
       imageUrl: json['strMealThumb'],
-      tags: List<String>.from(json['strTags'].split(', ')),
+      tags: json['strTags'] != null?List<String>.from(json['strTags'].split(', ')):[],
     );
   }
 

@@ -6,10 +6,7 @@ import '../../../core/api_config.dart';
 class MealsApi {
   Future<Response> getMeals() async {
     return DioClient.dio.get(
-      ApiConfig.searchMeal,
-      queryParameters: {
-        's': '',
-      },
+      "${ApiConfig.baseUrl}${ApiConfig.searchMeal}s=",
     );
   }
 

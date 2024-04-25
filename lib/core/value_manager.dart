@@ -19,10 +19,13 @@ class PaddingManager {
 }
 
 class SizeManager{
+  static final double s4 = 4.0.sp;
   static final double s8 = 8.0.sp;
   static final double s10 = 10.0.sp;
   static final double s12 = 12.0.sp;
   static final double s16 = 16.0.sp;
   static final double s20 = 20.0.sp;
   static final double s24 = 24.0.sp;
+  static final double s50 = 50.0.sp;
+  static final double s100 = 100.0.sp;
 }
