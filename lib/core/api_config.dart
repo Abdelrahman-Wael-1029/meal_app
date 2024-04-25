@@ -1,12 +1,13 @@
+class ApiConfig {
+  static String baseUrl = "https://www.themealdb.com/api/json/v1/1/";
 
-String baseUrl = "https://www.themealdb.com/api/json/v1/1/";
-
-String searchMeal = "${baseUrl}search.php?"; // search.php?s=Arrabiata  || s="" for all meals
-String detailsMeal = "${baseUrl}lookup.php?"; // meal.php?i=52772
-String listCategories = "${baseUrl}categories.php"; 
-String filterMealsByCategory = "${baseUrl}filter.php?"; // filter.php?c=Seafood
-String randomMeal = "${baseUrl}random.php"; // random.php
-
-
-
-
+  static String searchMeal =
+      "search.php?"; // search.php?s=Arrabiata  || s="" for all meals
+  static String detailsMeal = "lookup.php?"; // meal.php?i=52772
+  static String listCategories = "categories.php";
+  static String filterMealsByCategory = "filter.php?"; // filter.php?c=Seafood
+  static String randomMeal = "random.php"; // random.php
+  static Map<String, dynamic> headers =  {
+        'Content-Type': 'application/json',
+      };
+}

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:meal_app/common/networks/dio_client.dart';
 import 'package:meal_app/core/route.dart';
 import 'package:meal_app/core/theme_manager.dart';
 import 'package:meal_app/view/splash/splash_screen.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ScreenUtil.ensureScreenSize();
-
+  DioClient.init();
   runApp(MyApp());
 }
 
