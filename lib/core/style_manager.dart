@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meal_app/core/font_manager.dart';
+import 'font_manager.dart';
 
 TextStyle _getTextStyle({
   required double fontSize,

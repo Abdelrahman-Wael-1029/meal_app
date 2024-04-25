@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:meal_app/core/app_messages.dart';
-import 'package:meal_app/view/splash/splash_screen.dart';
+import 'app_messages.dart';
+import '../view/splash/splash_screen.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
