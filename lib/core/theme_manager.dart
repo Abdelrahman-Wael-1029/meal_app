@@ -29,7 +29,7 @@ ThemeData appTheme() {
     ),
     textTheme: TextTheme(
       // for category of food
-      labelSmall: getLightStyle(color: ColorManager.black),
+      labelSmall: getMediumStyle(color: ColorManager.black, fontSize: FontSizeManager.size10),
       // for tab bar in details
       labelMedium: getMediumStyle(
           color: ColorManager.black, fontSize: FontSizeManager.size18),
@@ -37,8 +37,8 @@ ThemeData appTheme() {
       titleMedium: getSemiboldStyle(
           color: ColorManager.black, fontSize: FontSizeManager.size20),
       // for title food in home page
-      titleSmall: getSemiboldStyle(
-          color: ColorManager.black, fontSize: FontSizeManager.size18),
+      headlineMedium: getSemiboldStyle(
+          color: ColorManager.black, fontSize: FontSizeManager.size12),
       // for description
       bodyMedium: getMediumStyle(
           color: ColorManager.black, fontSize: FontSizeManager.size16),

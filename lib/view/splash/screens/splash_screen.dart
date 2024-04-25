@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:meal_app/view/home_layout/layout/home_layout.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -17,7 +18,8 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     timer = Timer(const Duration(seconds: 3), () {
-      print('done out');
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => const HomeLayout()));
     });
   }
 

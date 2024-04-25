@@ -1,16 +1,40 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meal_app/data/model/meal.dart';
-import 'package:meal_app/repository/meal/meal_repository.dart';
-import 'package:meal_app/viewmodel/meal/cubit/meal_state.dart';
+import 'package:meal_app/data/model/category.dart';
+import 'package:meal_app/repository/category/category_repository.dart';
+import '../../../data/model/meal.dart';
+import '../../../repository/meal/meal_repository.dart';
+import 'home_state.dart';
 
-class MealCubit extends Cubit<MealState>{
+class HomeCubit extends Cubit<HomeState> {
+  int currentIndex = 0;
+
   final MealRepository mealRepository;
-  
+  final CategoryRepository categoryRepository;
+
   List<Meal> meals = [];
+  List<Category> categories = [];
   Meal? ranodomMeal;
   Meal? seletedMeal;
-  
-  MealCubit(this.mealRepository) : super(MealInitState());
+
+  HomeCubit({required this.mealRepository, required this.categoryRepository})
+      : super(InitState());
+
+  void changeIndex(int index) {
+    currentIndex = index;
+    emit(ChangeIndex());
+  }
+
+  void getCategories() {
+    emit(CategoryLoading());
+    try {
+      categoryRepository.getCategories().then((value) {
+        categories = value;
+        emit(CategorySuccess());
+      });
+    } catch (e) {
+      emit(CategoryError(e.toString()));
+    }
+  }
 
   void getMeals() {
     emit(MealLoading());
@@ -59,9 +83,4 @@ class MealCubit extends Cubit<MealState>{
       emit(MealError(e.toString()));
     }
   }
-
-  
-
-  
-
 }
