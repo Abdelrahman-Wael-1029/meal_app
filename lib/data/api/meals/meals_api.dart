@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:meal_app/common/networks/dio_client.dart';
-import 'package:meal_app/core/api_config.dart';
-import 'package:meal_app/data/model/meal.dart';
+import '../../../common/networks/dio_client.dart';
+import '../../../core/api_config.dart';
+import '../../model/meal.dart';
 
 class MealsApi {
   Future<Response> getMeals() async {

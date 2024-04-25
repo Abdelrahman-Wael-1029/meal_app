@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:meal_app/core/color_manager.dart';
-import 'package:meal_app/core/font_manager.dart';
-import 'package:meal_app/core/style_manager.dart';
+import 'color_manager.dart';
+import 'font_manager.dart';
+import 'style_manager.dart';
 
 ThemeData appTheme() {
   return ThemeData(

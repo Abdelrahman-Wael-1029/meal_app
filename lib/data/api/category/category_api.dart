@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:meal_app/common/networks/dio_client.dart';
-import 'package:meal_app/core/api_config.dart';
+import '../../../common/networks/dio_client.dart';
+import '../../../core/api_config.dart';
 
-class CategoryApi{
+class CategoryApi {
   Future<Response> getCategories() async {
     return DioClient.dio.get(
       ApiConfig.listCategories,
@@ -17,6 +17,5 @@ class CategoryApi{
       },
     );
   }
-
   
 }

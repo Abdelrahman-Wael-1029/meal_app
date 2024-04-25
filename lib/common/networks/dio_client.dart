@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:meal_app/core/api_config.dart';
+import '../../core/api_config.dart';
 
 class DioClient {
   static late Dio dio;
