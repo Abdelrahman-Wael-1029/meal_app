@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import '../../data/api/meals/meals_api.dart';
 import '../../data/model/meal.dart';
 
@@ -10,7 +9,7 @@ class MealRepository {
     final response = await mealsApi.getMeals();
     if (response.data == []) {
       return [];
-    }
+    }   
 
     return (response.data['meals'] as List)
         .map((e) => Meal.fromJson(e))

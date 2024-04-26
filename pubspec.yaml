@@ -33,6 +33,7 @@ dependencies:
   flutter_bloc: ^8.1.5
   bloc: ^8.1.4
   cached_network_image_builder: ^0.3.0
+  easy_sidemenu: ^0.6.0
   flutter:
     sdk: flutter
   # for responsive design   

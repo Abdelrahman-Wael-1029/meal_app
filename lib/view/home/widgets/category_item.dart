@@ -1,7 +1,7 @@
 import 'package:cached_network_image_builder/cached_network_image_builder.dart';
 import 'package:flutter/material.dart';
-import 'package:meal_app/core/value_manager.dart';
-import 'package:meal_app/data/model/category.dart';
+import '../../../core/value_manager.dart';
+import '../../../data/model/category.dart';
 
 class CategoryItem extends StatelessWidget {
   final Category category;

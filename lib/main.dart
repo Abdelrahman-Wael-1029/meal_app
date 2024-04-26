@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:meal_app/bloc_observer.dart';
-import 'package:meal_app/data/api/category/category_api.dart';
-import 'package:meal_app/data/api/meals/meals_api.dart';
-import 'package:meal_app/repository/category/category_repository.dart';
-import 'package:meal_app/repository/meal/meal_repository.dart';
-import 'package:meal_app/viewmodel/home/cubit/home_cubit.dart';
+import 'bloc_observer.dart';
+import 'data/api/category/category_api.dart';
+import 'data/api/meals/meals_api.dart';
+import 'repository/category/category_repository.dart';
+import 'repository/meal/meal_repository.dart';
+import 'viewmodel/home/cubit/home_cubit.dart';
 import 'common/networks/dio_client.dart';
 import 'core/route.dart';
 import 'core/theme_manager.dart';
@@ -18,7 +18,15 @@ void main() async {
   await ScreenUtil.ensureScreenSize();
   Bloc.observer = MyBlocObserver();
   DioClient.init();
-  runApp(MyApp());
+  runApp(BlocProvider(
+    create: (context) => HomeCubit(
+      mealRepository: MealRepository(MealsApi()),
+      categoryRepository: CategoryRepository(CategoryApi()),
+    )
+      ..getCategories()
+      ..getMeals(),
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatefulWidget {
@@ -40,20 +48,12 @@ class _MyAppState extends State<MyApp> {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return BlocProvider(
-          create: (context) => HomeCubit(
-            mealRepository: MealRepository(MealsApi()),
-            categoryRepository: CategoryRepository(CategoryApi()),
-          )
-            ..getCategories()
-            ..getMeals(),
-          child: MaterialApp(
-            title: 'Flutter Demo',
-            onGenerateRoute: RouteGenerator.generateRoute,
-            home: const SplashScreen(),
-            theme: appTheme(),
-            debugShowCheckedModeBanner: false,
-          ),
+        return MaterialApp(
+          title: 'Flutter Demo',
+          onGenerateRoute: RouteGenerator.generateRoute,
+          home: const SplashScreen(),
+          theme: appTheme(),
+          debugShowCheckedModeBanner: false,
         );
       },
     );

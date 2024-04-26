@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meal_app/data/model/category.dart';
-import 'package:meal_app/repository/category/category_repository.dart';
+import '../../../data/model/category.dart';
+import '../../../repository/category/category_repository.dart';
 import '../../../data/model/meal.dart';
 import '../../../repository/meal/meal_repository.dart';
 import 'home_state.dart';

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:meal_app/core/value_manager.dart';
-import 'package:meal_app/view/home/widgets/category_item.dart';
-import 'package:meal_app/view/home/widgets/meal_item.dart';
-import 'package:meal_app/viewmodel/home/cubit/home_cubit.dart';
-import 'package:meal_app/viewmodel/home/cubit/home_state.dart';
+import '../../../core/value_manager.dart';
+import '../widgets/category_item.dart';
+import '../widgets/meal_item.dart';
+import '../../../viewmodel/home/cubit/home_cubit.dart';
+import '../../../viewmodel/home/cubit/home_state.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -13,6 +12,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
       child: Padding(
         padding: EdgeInsets.all(SizeManager.s10),
         child: BlocBuilder<HomeCubit, HomeState>(
@@ -37,9 +37,11 @@ class HomeScreen extends StatelessWidget {
                       itemCount: cubit.categories.length,
                     ),
                   ),
-                SizedBox(
-                  height: SizeManager.s20,
-                ),
+                if (cubit.categories.isNotEmpty)
+                  SizedBox(
+                    height: SizeManager.s20,
+                  ),
+
                 if (cubit.meals.isNotEmpty)
                   Wrap(
                     spacing: SizeManager.s16,
