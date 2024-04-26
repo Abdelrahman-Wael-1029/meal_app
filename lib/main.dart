@@ -18,7 +18,15 @@ void main() async {
   await ScreenUtil.ensureScreenSize();
   Bloc.observer = MyBlocObserver();
   DioClient.init();
-  runApp(MyApp());
+  runApp(BlocProvider(
+    create: (context) => HomeCubit(
+      mealRepository: MealRepository(MealsApi()),
+      categoryRepository: CategoryRepository(CategoryApi()),
+    )
+      ..getCategories()
+      ..getMeals(),
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatefulWidget {
@@ -40,20 +48,12 @@ class _MyAppState extends State<MyApp> {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return BlocProvider(
-          create: (context) => HomeCubit(
-            mealRepository: MealRepository(MealsApi()),
-            categoryRepository: CategoryRepository(CategoryApi()),
-          )
-            ..getCategories()
-            ..getMeals(),
-          child: MaterialApp(
-            title: 'Flutter Demo',
-            onGenerateRoute: RouteGenerator.generateRoute,
-            home: const SplashScreen(),
-            theme: appTheme(),
-            debugShowCheckedModeBanner: false,
-          ),
+        return MaterialApp(
+          title: 'Flutter Demo',
+          onGenerateRoute: RouteGenerator.generateRoute,
+          home: const SplashScreen(),
+          theme: appTheme(),
+          debugShowCheckedModeBanner: false,
         );
       },
     );

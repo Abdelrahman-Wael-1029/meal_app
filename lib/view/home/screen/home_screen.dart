@@ -37,9 +37,11 @@ class HomeScreen extends StatelessWidget {
                       itemCount: cubit.categories.length,
                     ),
                   ),
-                SizedBox(
-                  height: SizeManager.s20,
-                ),
+                if (cubit.categories.isNotEmpty)
+                  SizedBox(
+                    height: SizeManager.s20,
+                  ),
+
                 if (cubit.meals.isNotEmpty)
                   Wrap(
                     spacing: SizeManager.s16,

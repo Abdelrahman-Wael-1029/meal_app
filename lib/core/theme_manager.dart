@@ -46,5 +46,10 @@ ThemeData appTheme() {
       displayMedium: getMediumStyle(
           color: ColorManager.black, fontSize: FontSizeManager.size24),
     ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      selectedItemColor: ColorManager.primary,
+      unselectedItemColor: ColorManager.lightblack,
+      
+    ),
   );
 }
