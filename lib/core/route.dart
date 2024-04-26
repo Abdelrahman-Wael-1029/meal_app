@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meal_app/view/home_layout/layout/home_layout.dart';
+import '../view/home_layout/layout/home_layout.dart';
 import 'app_messages.dart';
 import '../view/splash/screens/splash_screen.dart';
 

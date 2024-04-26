@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:meal_app/core/value_manager.dart';
-import 'package:meal_app/view/home/widgets/category_item.dart';
-import 'package:meal_app/view/home/widgets/meal_item.dart';
-import 'package:meal_app/viewmodel/home/cubit/home_cubit.dart';
-import 'package:meal_app/viewmodel/home/cubit/home_state.dart';
+import '../../../core/value_manager.dart';
+import '../widgets/category_item.dart';
+import '../widgets/meal_item.dart';
+import '../../../viewmodel/home/cubit/home_cubit.dart';
+import '../../../viewmodel/home/cubit/home_state.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

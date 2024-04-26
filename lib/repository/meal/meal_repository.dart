@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import '../../data/api/meals/meals_api.dart';
 import '../../data/model/meal.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meal_app/view/home/layout/home_screen.dart';
+import '../../home/layout/home_screen.dart';
 
 class HomeLayout extends StatelessWidget {
   static const routeName = '/home';
