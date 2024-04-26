@@ -9,7 +9,7 @@ class MealRepository {
     final response = await mealsApi.getMeals();
     if (response.data == []) {
       return [];
-    }
+    }   
 
     return (response.data['meals'] as List)
         .map((e) => Meal.fromJson(e))

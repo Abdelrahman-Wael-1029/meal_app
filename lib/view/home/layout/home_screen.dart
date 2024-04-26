@@ -12,6 +12,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
       child: Padding(
         padding: EdgeInsets.all(SizeManager.s10),
         child: BlocBuilder<HomeCubit, HomeState>(

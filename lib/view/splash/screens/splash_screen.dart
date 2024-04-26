@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import '../../home_layout/layout/home_layout.dart';
+import '../../home_layout/desktop/desktop_layout.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     timer = Timer(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => const HomeLayout()));
+          context, MaterialPageRoute(builder: (context) =>  DesktopLayout()));
     });
   }
 
