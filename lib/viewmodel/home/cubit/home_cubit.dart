@@ -48,11 +48,11 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
-  void getMealsByCategory(String category) {
+  void getMealsBySearch(String search) {
     emit(MealLoading());
     try {
-      mealRepository.getMealsByCategory(category).then((value) {
-        meals = value;
+      mealRepository.getMealsBySearch(search).then((value) {
+        meals = List<Meal>.from(value);
         emit(MealSuccess());
       });
     } catch (e) {

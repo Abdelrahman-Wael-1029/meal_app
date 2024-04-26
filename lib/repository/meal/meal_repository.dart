@@ -9,8 +9,18 @@ class MealRepository {
     final response = await mealsApi.getMeals();
     if (response.data == []) {
       return [];
-    }   
+    }
 
+    return (response.data['meals'] as List)
+        .map((e) => Meal.fromJson(e))
+        .toList();
+  }
+
+  Future getMealsBySearch(String search) async {
+    final response = await mealsApi.getMealsBySearch(search);
+    if (response.data == null || response.data == [] || response.data['meals'] == null) {
+      return [];
+    }
     return (response.data['meals'] as List)
         .map((e) => Meal.fromJson(e))
         .toList();

@@ -10,6 +10,15 @@ class MealsApi {
     );
   }
 
+  Future<Response> getMealsBySearch(String search) async {
+    return DioClient.dio.get(
+      ApiConfig.searchMeal,
+      queryParameters: {
+        's': search,
+      },
+    );
+  }
+
   Future<Response> getMealById(String id) async {
     return DioClient.dio.get(
       ApiConfig.detailsMeal,
@@ -19,7 +28,7 @@ class MealsApi {
     );
   }
 
-    Future<Response> getMealsByCategory(String category) async {
+  Future<Response> getMealsByCategory(String category) async {
     return DioClient.dio.get(
       ApiConfig.filterMealsByCategory,
       queryParameters: {
@@ -33,5 +42,4 @@ class MealsApi {
       ApiConfig.randomMeal,
     );
   }
-
 }

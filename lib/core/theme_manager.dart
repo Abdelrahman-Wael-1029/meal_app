@@ -6,6 +6,9 @@ import 'style_manager.dart';
 
 ThemeData appTheme() {
   return ThemeData(
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: ColorManager.primary,
+    ),
     primaryColor: ColorManager.primary,
     disabledColor: ColorManager.grey,
     buttonTheme: const ButtonThemeData(
@@ -29,7 +32,8 @@ ThemeData appTheme() {
     ),
     textTheme: TextTheme(
       // for category of food
-      labelSmall: getMediumStyle(color: ColorManager.black, fontSize: FontSizeManager.size10),
+      labelSmall: getMediumStyle(
+          color: ColorManager.black, fontSize: FontSizeManager.size10),
       // for tab bar in details
       labelMedium: getMediumStyle(
           color: ColorManager.black, fontSize: FontSizeManager.size18),
@@ -49,7 +53,6 @@ ThemeData appTheme() {
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       selectedItemColor: ColorManager.primary,
       unselectedItemColor: ColorManager.lightblack,
-      
     ),
   );
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meal_app/common/widget/text_field.dart';
 import '../../../core/value_manager.dart';
 import '../widgets/category_item.dart';
 import '../widgets/meal_item.dart';
@@ -19,8 +20,21 @@ class HomeScreen extends StatelessWidget {
           builder: (context, state) {
             var cubit = context.read<HomeCubit>();
             return Column(
+              mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
+                getTextField(
+                  context,
+                  hintText: "Search",
+                  suffixIcon: const Icon(Icons.search),
+                  onChanged: (value) {
+                    cubit.getMealsBySearch(value);
+                  },
+                  
+                ),
+                SizedBox(
+                  height: SizeManager.s20,
+                ),
                 if (cubit.categories.isNotEmpty)
                   SizedBox(
                     height: 150,
@@ -41,7 +55,6 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(
                     height: SizeManager.s20,
                   ),
-
                 if (cubit.meals.isNotEmpty)
                   Wrap(
                     spacing: SizeManager.s16,

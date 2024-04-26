@@ -39,6 +39,7 @@ class _DesktopLayoutState extends State<DesktopLayout> {
           builder: (context, state) {
           var cubit = context.read<HomeCubit>();
             return Row(
+              crossAxisAlignment: CrossAxisAlignment.start  ,
               children: [
                 SideMenu(
                   displayModeToggleDuration: const Duration(milliseconds: 200),

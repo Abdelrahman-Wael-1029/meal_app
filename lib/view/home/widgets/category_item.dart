@@ -1,5 +1,5 @@
-import 'package:cached_network_image_builder/cached_network_image_builder.dart';
 import 'package:flutter/material.dart';
+import 'package:meal_app/common/widget/image.dart';
 import '../../../core/value_manager.dart';
 import '../../../data/model/category.dart';
 
@@ -14,17 +14,7 @@ class CategoryItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Expanded(
-          child: CachedNetworkImageBuilder(
-            url: category.imageUrl,
-            builder: (imageFile) {
-              return Center(
-                child: Image.file(
-                  imageFile,
-                  fit: BoxFit.cover,
-                ),
-              );
-            },
-          ),
+          child: getImage(url: category.imageUrl),
         ),
         SizedBox(
           height: SizeManager.s8,

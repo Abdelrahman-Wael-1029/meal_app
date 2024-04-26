@@ -1,5 +1,5 @@
-import 'package:cached_network_image_builder/cached_network_image_builder.dart';
 import 'package:flutter/material.dart';
+import 'package:meal_app/common/widget/image.dart';
 import '../../../core/value_manager.dart';
 import '../../../data/model/meal.dart';
 
@@ -20,18 +20,10 @@ class MealItem extends StatelessWidget {
             child: Stack(
               alignment: Alignment.topRight,
               children: [
-                CachedNetworkImageBuilder(
+                getImage(
                   url: meal.imageUrl,
-                  builder: (imageFile) {
-                    return Center(
-                      child: Image.file(
-                        width: double.infinity,
-                        height: double.infinity,
-                        imageFile,
-                        fit: BoxFit.cover,
-                      ),
-                    );
-                  },
+                  width: double.infinity,
+                  height: double.infinity,
                 ),
                 IconButton(
                   onPressed: () {},
