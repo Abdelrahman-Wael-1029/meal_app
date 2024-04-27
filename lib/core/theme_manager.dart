@@ -19,33 +19,32 @@ ThemeData appTheme() {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
+        padding: WidgetStateProperty.all<EdgeInsetsGeometry>(const EdgeInsets.symmetric(vertical: 15, horizontal: 20)),
         backgroundColor: WidgetStateProperty.all<Color>(ColorManager.primary),
+        foregroundColor: WidgetStateProperty.all<Color>(ColorManager.white),
         shape: WidgetStateProperty.all<StadiumBorder>(const StadiumBorder()),
         textStyle: WidgetStateProperty.all<TextStyle>(
-          TextStyle(
-            color: ColorManager.white,
-            fontSize: FontSizeManager.size16,
-            fontWeight: FontWeight.bold,
-          ),
+          getMediumStyle(
+              color: ColorManager.black, fontSize: FontSizeManager.size14),
         ),
       ),
     ),
     textTheme: TextTheme(
       // for category of food
       labelSmall: getMediumStyle(
-          color: ColorManager.black, fontSize: FontSizeManager.size10),
+          color: ColorManager.black, fontSize: FontSizeManager.size14),
       // for tab bar in details
       labelMedium: getMediumStyle(
-          color: ColorManager.black, fontSize: FontSizeManager.size18),
+          color: ColorManager.black, fontSize: FontSizeManager.size12),
       // for name the food in details
       titleMedium: getSemiboldStyle(
-          color: ColorManager.black, fontSize: FontSizeManager.size20),
+          color: ColorManager.black, fontSize: FontSizeManager.size24),
       // for title food in home page
       headlineMedium: getSemiboldStyle(
-          color: ColorManager.black, fontSize: FontSizeManager.size12),
+          color: ColorManager.black, fontSize: FontSizeManager.size16),
       // for description
       bodyMedium: getMediumStyle(
-          color: ColorManager.black, fontSize: FontSizeManager.size16),
+          color: ColorManager.black, fontSize: FontSizeManager.size14),
       // for button
       displayMedium: getMediumStyle(
           color: ColorManager.black, fontSize: FontSizeManager.size24),
@@ -53,6 +52,16 @@ ThemeData appTheme() {
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       selectedItemColor: ColorManager.primary,
       unselectedItemColor: ColorManager.lightblack,
+    ),
+    tabBarTheme: TabBarTheme(
+      labelColor: ColorManager.white,
+      // remove dividers and indicator
+      indicator: BoxDecoration(
+        color: ColorManager.lightblack,
+        // circular border radius
+        borderRadius: BorderRadius.circular(50),
+      ),
+      dividerHeight: 0,
     ),
   );
 }

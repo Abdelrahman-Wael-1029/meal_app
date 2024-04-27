@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:meal_app/data/model/meal.dart';
 import 'package:meal_app/view/cart/screen/cart_screen.dart';
 import 'package:meal_app/view/favorite/screen/favorite_screen.dart';
+import 'package:meal_app/view/meal_details/screens/meal_details.dart';
 import 'package:meal_app/view/profile/screen/profile_screen.dart';
 import '../view/home_layout/desktop/desktop_layout.dart';
 import 'app_messages.dart';
@@ -20,6 +22,11 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const CartScreen());
       case ProfileScreen.routeName:
         return MaterialPageRoute(builder: (_) => const ProfileScreen());
+      case MealDetails.routeName:
+        final args = settings.arguments;
+        return MaterialPageRoute(
+          builder: (_) => MealDetails(meal: args as Meal),
+        );
       default:
         return _errorRoute();
     }
