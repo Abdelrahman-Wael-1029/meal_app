@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meal_app/common/widget/image.dart';
-import 'package:meal_app/view/category_details/screen/category_details.dart';
-import 'package:meal_app/viewmodel/home/cubit/home_cubit.dart';
+import '../../../common/widget/image.dart';
+import '../../category_details/screen/category_details.dart';
+import '../../../viewmodel/home/cubit/home_cubit.dart';
 import '../../../core/value_manager.dart';
 import '../../../data/model/category.dart';
 

@@ -1,4 +1,4 @@
-import 'package:meal_app/data/model/meal_category.dart';
+import '../../data/model/meal_category.dart';
 
 import '../../data/api/meals/meals_api.dart';
 import '../../data/model/meal.dart';

@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:meal_app/core/response_manager.dart';
-import 'package:meal_app/view/home_layout/mobile/mobile_layout.dart';
+import '../../../core/response_manager.dart';
+import '../../home_layout/mobile/mobile_layout.dart';
 import '../../home_layout/desktop/desktop_layout.dart';
 
 class SplashScreen extends StatefulWidget {

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:meal_app/common/widget/image.dart';
-import 'package:meal_app/core/color_manager.dart';
-import 'package:meal_app/core/value_manager.dart';
-import 'package:meal_app/data/model/meal.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meal_app/common/util/popup_message.dart';
+import 'package:meal_app/viewmodel/cart/cubit/cart_cubit.dart';
+import '../../../common/widget/image.dart';
+import '../../../core/color_manager.dart';
+import '../../../core/value_manager.dart';
+import '../../../data/model/cart.dart';
+import '../../../data/model/meal.dart';
 
 // ignore: must_be_immutable
 class MealDetails extends StatefulWidget {
@@ -240,7 +244,19 @@ class _MealDetailsState extends State<MealDetails> {
             ),
             Expanded(
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  var cardCubit = context.read<CartCubit>();
+                  cardCubit.addCart(
+                    Cart.fromMap({
+                      "name": widget.meal.name,
+                      "imageUrl": widget.meal.imageUrl,
+                      "id": widget.meal.id,
+                      "price": widget.meal.price,
+                      "quantity": count,
+                    }),
+                  );
+                  popUpMessage(context: context, message: 'Added to cart', background: Colors.green);
+                },
                 child: const Text(
                   'Add to cart',
                 ),

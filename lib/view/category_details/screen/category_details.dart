@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meal_app/common/widget/image.dart';
-import 'package:meal_app/core/color_manager.dart';
-import 'package:meal_app/core/value_manager.dart';
-import 'package:meal_app/data/model/category.dart';
-import 'package:meal_app/data/model/meal_category.dart';
-import 'package:meal_app/view/meal_details/screens/meal_details.dart';
-import 'package:meal_app/viewmodel/home/cubit/home_cubit.dart';
+import '../../../common/widget/image.dart';
+import '../../../core/color_manager.dart';
+import '../../../core/value_manager.dart';
+import '../../../data/model/category.dart';
+import '../../../data/model/meal_category.dart';
+import '../../meal_details/screens/meal_details.dart';
+import '../../../viewmodel/home/cubit/home_cubit.dart';
 
 class CategoryDetails extends StatelessWidget {
   final Category category;
