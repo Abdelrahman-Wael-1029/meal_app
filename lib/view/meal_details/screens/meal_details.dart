@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meal_app/viewmodel/cart/cubit/cart_cubit.dart';
 import '../../../common/widget/image.dart';
 import '../../../core/color_manager.dart';
 import '../../../core/value_manager.dart';
+import '../../../data/model/cart.dart';
 import '../../../data/model/meal.dart';
 
 // ignore: must_be_immutable
@@ -240,7 +243,18 @@ class _MealDetailsState extends State<MealDetails> {
             ),
             Expanded(
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  var cardCubit = context.read<CartCubit>();
+                  cardCubit.addCart(
+                    Cart.fromMap({
+                      "name": widget.meal.name,
+                      "imageUrl": widget.meal.imageUrl,
+                      "id": widget.meal.id,
+                      "price": widget.meal.price,
+                      "quantity": count,
+                    }),
+                  );
+                },
                 child: const Text(
                   'Add to cart',
                 ),

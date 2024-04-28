@@ -1,6 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive/hive.dart';
+import 'package:meal_app/data/model/cart.dart';
+import 'package:meal_app/repository/cart/cart_repository.dart';
+import 'package:meal_app/viewmodel/cart/cubit/cart_cubit.dart';
 import 'bloc_observer.dart';
 import 'data/api/category/category_api.dart';
 import 'data/api/meals/meals_api.dart';
@@ -14,19 +20,38 @@ import 'view/splash/screens/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  var path = Directory.current.path;
+  Hive
+    ..init(path)
+    ..registerAdapter(CartAdapter());
+    // clear data
+    // await Hive.deleteBoxFromDisk('cart');
 
   await ScreenUtil.ensureScreenSize();
   Bloc.observer = MyBlocObserver();
   DioClient.init();
-  runApp(BlocProvider(
-    create: (context) => HomeCubit(
-      mealRepository: MealRepository(MealsApi()),
-      categoryRepository: CategoryRepository(CategoryApi()),
-    )
-      ..getCategories()
-      ..getMeals(),
-    child: MyApp(),
-  ));
+  runApp(
+    // multi bloc provider
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => HomeCubit(
+            mealRepository: MealRepository(MealsApi()),
+            categoryRepository: CategoryRepository(CategoryApi()),
+          )
+            ..getCategories()
+            ..getMeals(),
+        ),
+        BlocProvider(
+          create: (context) => CartCubit(
+            cartRepository: CartRepository(),
+          )..getCart(),
+        ),
+      ],
+      child: MyApp(),
+    ),
+   
+  );
 }
 
 class MyApp extends StatefulWidget {
