@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meal_app/common/util/popup_message.dart';
 import 'package:meal_app/viewmodel/cart/cubit/cart_cubit.dart';
 import '../../../common/widget/image.dart';
 import '../../../core/color_manager.dart';
@@ -254,6 +255,7 @@ class _MealDetailsState extends State<MealDetails> {
                       "quantity": count,
                     }),
                   );
+                  popUpMessage(context: context, message: 'Added to cart', background: Colors.green);
                 },
                 child: const Text(
                   'Add to cart',

@@ -42,7 +42,6 @@ class _DesktopLayoutState extends State<DesktopLayout> {
             var cubit = context.read<HomeCubit>();
             return BlocBuilder<CartCubit, CartState>(
               builder: (context, state) {
-                print("rebuid cart");
                 return Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

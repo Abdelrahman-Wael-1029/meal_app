@@ -6,7 +6,7 @@ import 'package:meal_app/viewmodel/cart/cubit/cart_state.dart';
 class CartCubit extends Cubit<CartState> {
   double total = 0;
   final CartRepository cartRepository;
-  List<Cart> carts = [];
+  List<Cart> ?carts;
   CartCubit({
     required this.cartRepository,
   }) : super(InitState());
@@ -24,6 +24,7 @@ class CartCubit extends Cubit<CartState> {
 
   void getCart() {
     try {
+      carts = [];
       emit(CartLoading());
       cartRepository.getCart().then((value) {
         carts = List<Cart>.from(value);
@@ -39,6 +40,7 @@ class CartCubit extends Cubit<CartState> {
       emit(CartLoading());
       cartRepository.deleteCart(index).then((value) {
         emit(CartDelete());
+        getCart();
       });
     } catch (e) {
       emit(CartError(e.toString()));

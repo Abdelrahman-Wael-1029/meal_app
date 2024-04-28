@@ -13,7 +13,7 @@ class Cart {
   @HiveField(3)
   final double price;
   @HiveField(4)
-  final int quantity;
+  int quantity;
 
   Cart({
     required this.id,
