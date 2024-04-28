@@ -93,6 +93,9 @@ class _MealDetailsState extends State<MealDetails> {
                       ),
                   ],
                 ),
+                SizedBox(
+                  height: SizeManager.s8,
+                ),
                 OverflowBar(
                   alignment: MainAxisAlignment.spaceBetween,
                   children: [
