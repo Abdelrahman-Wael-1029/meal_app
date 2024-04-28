@@ -16,9 +16,17 @@ class CartCubit extends Cubit<CartState> {
       emit(CartLoading());
       cartRepository.addCart(data).then((value) {
         emit(CartAdd());
+        getCart();
       });
     } catch (e) {
       emit(CartError(e.toString()));
+    }
+  }
+
+  void setTotal() {
+    total = 0;
+    for (var item in carts!) {
+      total += item.price * item.quantity;
     }
   }
 
@@ -28,6 +36,7 @@ class CartCubit extends Cubit<CartState> {
       emit(CartLoading());
       cartRepository.getCart().then((value) {
         carts = List<Cart>.from(value);
+        setTotal();
         emit(CartSuccess());
       });
     } catch (e) {
@@ -52,6 +61,7 @@ class CartCubit extends Cubit<CartState> {
       emit(CartLoading());
       cartRepository.clearCart().then((value) {
         emit(CartClear());
+        getCart();
       });
     } catch (e) {
       emit(CartError(e.toString()));
@@ -64,6 +74,7 @@ class CartCubit extends Cubit<CartState> {
       emit(CartLoading());
       cartRepository.updateCart(index, data).then((value) {
         emit(CartUpdate());
+        getCart();
       });
     } catch (e) {
       emit(CartError(e.toString()));
