@@ -12,4 +12,6 @@ class ColorManager {
   static const Color grey = Colors.grey;
 
   static const Color black = Color(0xff090A08);
+
+  static const background = Colors.white;
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'color_manager.dart';
 import 'font_manager.dart';
@@ -6,6 +7,21 @@ import 'style_manager.dart';
 
 ThemeData appTheme() {
   return ThemeData(
+    scaffoldBackgroundColor: ColorManager.background,
+    appBarTheme:  const AppBarTheme(
+      backgroundColor: ColorManager.background,
+      elevation: 0,
+      iconTheme: IconThemeData(color: ColorManager.black),
+      titleTextStyle: TextStyle(
+        color: ColorManager.black,
+        fontSize: FontSizeManager.size24,
+        fontWeight: FontWeight.bold,
+      ),
+      systemOverlayStyle: SystemUiOverlayStyle(
+        statusBarColor: ColorManager.white,
+        statusBarIconBrightness: Brightness.dark,
+      ),
+    ),
     colorScheme: ColorScheme.fromSeed(
       seedColor: ColorManager.primary,
     ),
@@ -19,7 +35,8 @@ ThemeData appTheme() {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
-        padding: WidgetStateProperty.all<EdgeInsetsGeometry>(const EdgeInsets.symmetric(vertical: 15, horizontal: 20)),
+        padding: WidgetStateProperty.all<EdgeInsetsGeometry>(
+            const EdgeInsets.symmetric(vertical: 15, horizontal: 20)),
         backgroundColor: WidgetStateProperty.all<Color>(ColorManager.primary),
         foregroundColor: WidgetStateProperty.all<Color>(ColorManager.white),
         shape: WidgetStateProperty.all<StadiumBorder>(const StadiumBorder()),
@@ -49,7 +66,9 @@ ThemeData appTheme() {
       displayMedium: getMediumStyle(
           color: ColorManager.black, fontSize: FontSizeManager.size24),
     ),
-    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+    bottomNavigationBarTheme:  const BottomNavigationBarThemeData(
+      backgroundColor: ColorManager.background,
+      elevation: 10,
       selectedItemColor: ColorManager.primary,
       unselectedItemColor: ColorManager.lightblack,
     ),

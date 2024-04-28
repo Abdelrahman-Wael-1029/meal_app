@@ -41,6 +41,7 @@ class _MobileLayoutState extends State<MobileLayout> {
             child: pages[cubit.currentIndex],
           ),
           bottomNavigationBar: BottomNavigationBar(
+            backgroundColor: Colors.white,
             currentIndex: cubit.currentIndex,
             onTap: (index) {
               cubit.changeIndex(index);
