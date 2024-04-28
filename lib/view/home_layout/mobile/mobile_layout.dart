@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meal_app/view/cart/screen/cart_screen.dart';
-import 'package:meal_app/view/favorite/screen/favorite_screen.dart';
-import 'package:meal_app/view/profile/screen/profile_screen.dart';
-import 'package:meal_app/viewmodel/home/cubit/home_cubit.dart';
-import 'package:meal_app/viewmodel/home/cubit/home_state.dart';
+import '../../cart/screen/cart_screen.dart';
+import '../../favorite/screen/favorite_screen.dart';
+import '../../profile/screen/profile_screen.dart';
+import '../../../viewmodel/home/cubit/home_cubit.dart';
+import '../../../viewmodel/home/cubit/home_state.dart';
 import '../../home/screen/home_screen.dart';
 import 'package:easy_sidemenu/easy_sidemenu.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meal_app/data/model/meal_category.dart';
+import '../../../data/model/meal_category.dart';
 import '../../../data/model/category.dart';
 import '../../../repository/category/category_repository.dart';
 import '../../../data/model/meal.dart';
@@ -66,7 +66,6 @@ class HomeCubit extends Cubit<HomeState> {
     emit(MealLoading());
     try {
       var res = await mealRepository.getMealsByCategory(category);
-      print(res);
       return res;
     } catch (e) {
       debugPrint(e.toString());

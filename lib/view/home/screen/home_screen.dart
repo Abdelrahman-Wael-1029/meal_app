@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meal_app/common/widget/text_field.dart';
+import '../../../common/widget/text_field.dart';
 import '../../../core/value_manager.dart';
 import '../widgets/category_item.dart';
 import '../widgets/meal_item.dart';

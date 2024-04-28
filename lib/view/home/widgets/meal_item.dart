@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:meal_app/common/widget/image.dart';
-import 'package:meal_app/view/meal_details/screens/meal_details.dart';
+import '../../../common/widget/image.dart';
+import '../../meal_details/screens/meal_details.dart';
 import '../../../core/value_manager.dart';
 import '../../../data/model/meal.dart';
 

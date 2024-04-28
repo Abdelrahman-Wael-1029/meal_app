@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:meal_app/common/widget/image.dart';
-import 'package:meal_app/core/color_manager.dart';
-import 'package:meal_app/core/value_manager.dart';
-import 'package:meal_app/data/model/meal.dart';
+import '../../../common/widget/image.dart';
+import '../../../core/color_manager.dart';
+import '../../../core/value_manager.dart';
+import '../../../data/model/meal.dart';
 
 // ignore: must_be_immutable
 class MealDetails extends StatefulWidget {
