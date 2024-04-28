@@ -21,6 +21,8 @@ class MealDetails extends StatefulWidget {
 class _MealDetailsState extends State<MealDetails> {
   int count = 1;
 
+  var selected = {"0"};
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,12 +88,16 @@ class _MealDetailsState extends State<MealDetails> {
                         ),
                         child: Text(
                           widget.meal.tags[i],
-                          style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                                color: ColorManager.white,
-                              ),
+                          style:
+                              Theme.of(context).textTheme.bodySmall!.copyWith(
+                                    color: ColorManager.white,
+                                  ),
                         ),
                       ),
                   ],
+                ),
+                SizedBox(
+                  height: SizeManager.s8,
                 ),
                 OverflowBar(
                   alignment: MainAxisAlignment.spaceBetween,
@@ -123,10 +129,12 @@ class _MealDetailsState extends State<MealDetails> {
                           ),
                           Text(
                             count.toString(),
-                            style:
-                                Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                      color: ColorManager.black,
-                                    ),
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                                .copyWith(
+                                  color: ColorManager.black,
+                                ),
                           ),
                           const SizedBox(
                             width: 5,
@@ -153,75 +161,43 @@ class _MealDetailsState extends State<MealDetails> {
                 SizedBox(
                   height: SizeManager.s12,
                 ),
-                DefaultTabController(
-                  length: 2,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      IntrinsicHeight(
-                        child: TabBar(
-                          labelColor: ColorManager.white,
-                          indicator: BoxDecoration(
-                            color: ColorManager.lightblack,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          unselectedLabelColor: ColorManager.black,
-                          overlayColor:
-                              WidgetStateProperty.all<Color>(Colors.transparent),
-                          tabs: [
-                            Tab(
-                              child: Padding(
-                                padding: const EdgeInsets.all(10),
-                                child: Text(
-                                  'Details',
-                                  style: TextStyle(
-                                    fontSize: Theme.of(context)
-                                        .textTheme
-                                        .labelMedium!
-                                        .fontSize,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Tab(
-                              child: Padding(
-                                padding: const EdgeInsets.all(10),
-                                child: Text(
-                                  'Cooking',
-                                  style: TextStyle(
-                                    fontSize: Theme.of(context)
-                                        .textTheme
-                                        .labelMedium!
-                                        .fontSize,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                Center(
+                  child: SegmentedButton(
+                    multiSelectionEnabled: false,
+                    onSelectionChanged: (p0) {
+                      setState(() {
+                        selected = p0;
+                      });
+                    },
+                    // showSelectedIcon: false,
+                    segments: const [
+                      ButtonSegment(
+                        value: "0",
+                        label: Text("Details"),
+                        icon: Icon(null),
                       ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      SizedBox(
-                        height: 2000,
-                        child: TabBarView(
-                          children: [
-                            Text(
-                              widget.meal.Instructions,
-                              style: Theme.of(context).textTheme.bodyMedium,
-                            ),
-                            Text(
-                              widget.meal.Instructions,
-                              style: Theme.of(context).textTheme.bodyMedium,
-                            ),
-                          ],
-                        ),
+                      ButtonSegment(
+                        value: "1",
+                        label: Text("Cooking"),
+                        icon: Icon(null),
                       ),
                     ],
+                    selected: selected,
                   ),
                 ),
+                SizedBox(
+                  height: SizeManager.s8,
+                ),
+                if (selected.contains("0"))
+                  Text(
+                    widget.meal.Instructions,
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
+                if (selected.contains("1"))
+                  Text(
+                    widget.meal.Instructions,
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
               ],
             ),
           ),

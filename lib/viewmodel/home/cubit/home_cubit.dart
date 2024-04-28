@@ -1,4 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meal_app/data/model/meal_category.dart';
 import '../../../data/model/category.dart';
 import '../../../repository/category/category_repository.dart';
 import '../../../data/model/meal.dart';
@@ -60,6 +62,19 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
+  Future<List<MealCategory>> getMealsbyCategory(String category) async {
+    emit(MealLoading());
+    try {
+      var res = await mealRepository.getMealsByCategory(category);
+      print(res);
+      return res;
+    } catch (e) {
+      debugPrint(e.toString());
+      emit(MealError(e.toString()));
+      return [];
+    }
+  }
+
   void getRandomMeal() {
     emit(MealLoading());
     try {
@@ -72,15 +87,23 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
-  void getMealById(String id) {
+  Future<Meal> getMealById(String id) async {
     emit(MealLoading());
     try {
-      mealRepository.getMealById(id).then((value) {
-        seletedMeal = value;
-        emit(MealSuccess());
-      });
+      var meal = await mealRepository.getMealById(id);
+      emit(MealSuccess());
+      return meal;
     } catch (e) {
       emit(MealError(e.toString()));
+      return Meal(
+        id: '',
+        name: '',
+        price: 0,
+        category: '',
+        imageUrl: '',
+        tags: [],
+        Instructions: '',
+      );
     }
   }
 }

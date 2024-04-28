@@ -1,3 +1,5 @@
+import 'package:meal_app/data/model/meal_category.dart';
+
 import '../../data/api/meals/meals_api.dart';
 import '../../data/model/meal.dart';
 
@@ -18,7 +20,9 @@ class MealRepository {
 
   Future getMealsBySearch(String search) async {
     final response = await mealsApi.getMealsBySearch(search);
-    if (response.data == null || response.data == [] || response.data['meals'] == null) {
+    if (response.data == null ||
+        response.data == [] ||
+        response.data['meals'] == null) {
       return [];
     }
     return (response.data['meals'] as List)
@@ -31,11 +35,18 @@ class MealRepository {
     return Meal.fromJson(response.data['meals'][0]);
   }
 
-  Future<List<Meal>> getMealsByCategory(String category) async {
+  Future<List<MealCategory>> getMealsByCategory(String category) async {
     final response = await mealsApi.getMealsByCategory(category);
-    return (response.data['meals'] as List)
-        .map((e) => Meal.fromJson(e))
-        .toList();
+    if (response.data == null ||
+        response.data == [] ||
+        response.data['meals'] == null) {
+      return [];
+    }
+    List<MealCategory> meals = [];
+    for (var meal in response.data['meals']) {
+      meals.add(MealCategory.fromJson(meal));
+    }
+    return meals;
   }
 
   Future<Meal> getRandomMeal() async {

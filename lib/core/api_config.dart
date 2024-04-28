@@ -3,7 +3,7 @@ class ApiConfig {
 
   static String searchMeal =
       "search.php?"; // search.php?s=Arrabiata  || s="" for all meals
-  static String detailsMeal = "lookup.php?"; // meal.php?i=52772
+  static String detailsMeal = "lookup.php?"; // lookup.php?i=52772
   static String listCategories = "categories.php";
   static String filterMealsByCategory = "filter.php?"; // filter.php?c=Seafood
   static String randomMeal = "random.php"; // random.php
