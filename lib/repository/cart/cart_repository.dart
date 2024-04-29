@@ -9,8 +9,6 @@ class CartRepository{
     if(cart.isNotEmpty){
       for (var item in cart) {
         if(item.id == data.id){
-          print(item);
-          print(data);
           data.quantity = item.quantity + data.quantity;
           await updateCart(cart.indexOf(item), data);
           return;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meal_app/common/widget/image.dart';
 import 'package:meal_app/core/value_manager.dart';
+import 'package:meal_app/view/cart/widget/list_card_item.dart';
 import 'package:meal_app/viewmodel/cart/cubit/cart_cubit.dart';
 import 'package:meal_app/viewmodel/cart/cubit/cart_state.dart';
 
@@ -64,73 +64,43 @@ class _CartScreenState extends State<CartScreen> {
                   itemBuilder: (context, index) {
                     var cart = cartCubit.carts![index];
                     int quantity = cart.quantity;
-                    return Card(
-                      clipBehavior: Clip.antiAlias,
-                      elevation: 4,
-                      surfaceTintColor: Theme.of(context).primaryColor,
-                      child: Row(
-                        children: [
-                          CircleAvatar(
-                            radius: 50,
-                            child: getImage(
-                              url: cart.imageUrl,
+                    return listCardItem(
+                      context: context,
+                      model: cart,
+                      onDelete: () {
+                        cartCubit.deleteCart(index);
+                        setState(() {});
+                      },
+                      subChild: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                        child: OverflowBar(
+                          overflowAlignment: OverflowBarAlignment.center,
+                          children: [
+                            IconButton(
+                              onPressed: () {
+                                if (cart.quantity == 1) return;
+                                cart.quantity = quantity - 1;
+                                cartCubit.updateCart(index, cart);
+                                setState(() {});
+                              },
+                              icon: const Icon(Icons.remove),
                             ),
-                          ),
-                          SizedBox(
-                            width: SizeManager.s4,
-                          ),
-                          Expanded(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text(
-                                  cart.name,
-                                  style:
-                                      Theme.of(context).textTheme.headlineMedium,
-                                ),
-                                Text(cart.price.toString()),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: Theme.of(context).primaryColor,
-                                    ),
-                                    borderRadius: BorderRadius.circular(50),
-                                  ),
-                                  child: OverflowBar(
-                                    overflowAlignment: OverflowBarAlignment.center,
-                                    children: [
-                                      IconButton(
-                                        onPressed: () {
-                                          if (cart.quantity == 1) return;
-                                          cart.quantity = quantity - 1;
-                                          cartCubit.updateCart(index, cart);
-                                          setState(() {});
-                                        },
-                                        icon: const Icon(Icons.remove),
-                                      ),
-                                      Text(quantity.toString()),
-                                      IconButton(
-                                        onPressed: () {
-                                          cart.quantity = quantity + 1;
-                                          cartCubit.updateCart(index, cart);
-                                          setState(() {});
-                                        },
-                                        icon: const Icon(Icons.add),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
+                            Text(quantity.toString()),
+                            IconButton(
+                              onPressed: () {
+                                cart.quantity = quantity + 1;
+                                cartCubit.updateCart(index, cart);
+                                setState(() {});
+                              },
+                              icon: const Icon(Icons.add),
                             ),
-                          ),
-                          IconButton(
-                            onPressed: () {
-                              cartCubit.deleteCart(index);
-                              setState(() {});
-                            },
-                            icon: const Icon(Icons.delete),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     );
                   },

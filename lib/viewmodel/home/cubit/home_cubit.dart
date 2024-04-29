@@ -12,14 +12,15 @@ class HomeCubit extends Cubit<HomeState> {
 
   final MealRepository mealRepository;
   final CategoryRepository categoryRepository;
-
   List<Meal> meals = [];
   List<Category> categories = [];
   Meal? ranodomMeal;
   Meal? seletedMeal;
 
-  HomeCubit({required this.mealRepository, required this.categoryRepository})
-      : super(InitState());
+  HomeCubit({
+    required this.mealRepository,
+    required this.categoryRepository,
+  }) : super(InitState());
 
   void changeIndex(int index) {
     currentIndex = index;
