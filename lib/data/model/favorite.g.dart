@@ -1,22 +1,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'favorate.dart';
+part of 'favorite.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class FavorateAdapter extends TypeAdapter<Favorate> {
+class FavoriteAdapter extends TypeAdapter<Favorite> {
   @override
   final int typeId = 2;
 
   @override
-  Favorate read(BinaryReader reader) {
+  Favorite read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return Favorate(
+    return Favorite(
       id: fields[0] as String,
       name: fields[1] as String,
       imageUrl: fields[2] as String,
@@ -25,7 +25,7 @@ class FavorateAdapter extends TypeAdapter<Favorate> {
   }
 
   @override
-  void write(BinaryWriter writer, Favorate obj) {
+  void write(BinaryWriter writer, Favorite obj) {
     writer
       ..writeByte(4)
       ..writeByte(0)
@@ -44,7 +44,7 @@ class FavorateAdapter extends TypeAdapter<Favorate> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is FavorateAdapter &&
+      other is FavoriteAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

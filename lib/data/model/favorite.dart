@@ -1,9 +1,9 @@
 import 'package:hive_flutter/adapters.dart';
 
-part 'favorate.g.dart';
+part 'favorite.g.dart';
 
 @HiveType(typeId: 2)
-class Favorate {
+class Favorite {
   @HiveField(0)
   String id;
   @HiveField(1)
@@ -13,7 +13,7 @@ class Favorate {
   @HiveField(3)
   double price;
 
-  Favorate({
+  Favorite({
     required this.id,
     required this.name,
     required this.imageUrl,
@@ -29,8 +29,8 @@ class Favorate {
     };
   }
 
-  factory Favorate.fromMap(Map<String, dynamic> map) {
-    return Favorate(
+  factory Favorite.fromMap(Map<String, dynamic> map) {
+    return Favorite(
       id: map['id'],
       name: map['name'],
       imageUrl: map['imageUrl'],
@@ -40,6 +40,6 @@ class Favorate {
 
   @override
   String toString() {
-    return 'Favorate(id: $id, name: $name, imageUrl: $imageUrl, price: $price)';
+    return 'Favorite(id: $id, name: $name, imageUrl: $imageUrl, price: $price)';
   }
 }

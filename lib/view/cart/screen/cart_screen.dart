@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meal_app/core/value_manager.dart';
-import 'package:meal_app/view/cart/widget/list_card_item.dart';
-import 'package:meal_app/viewmodel/cart/cubit/cart_cubit.dart';
-import 'package:meal_app/viewmodel/cart/cubit/cart_state.dart';
+import '../../../core/value_manager.dart';
+import '../widget/list_card_item.dart';
+import '../../../viewmodel/cart/cubit/cart_cubit.dart';
+import '../../../viewmodel/cart/cubit/cart_state.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});

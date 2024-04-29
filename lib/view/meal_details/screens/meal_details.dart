@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meal_app/common/util/popup_message.dart';
-import 'package:meal_app/data/model/favorate.dart';
-import 'package:meal_app/viewmodel/cart/cubit/cart_cubit.dart';
-import 'package:meal_app/viewmodel/favorate/cubit/favorate_cubit.dart';
+import '../../../common/util/popup_message.dart';
+import '../../../data/model/favorite.dart';
+import '../../../viewmodel/cart/cubit/cart_cubit.dart';
+import '../../../viewmodel/favorite/cubit/favorite_cubit.dart';
 import '../../../common/widget/image.dart';
 import '../../../core/color_manager.dart';
 import '../../../core/value_manager.dart';
@@ -227,9 +227,9 @@ class _MealDetailsState extends State<MealDetails> {
             Expanded(
               child: ElevatedButton(
                 onPressed: () {
-                  var favorateCubit = context.read<FavorateCubit>();
-                  favorateCubit.addFavorate(
-                    Favorate.fromMap({
+                  var favoriteCubit = context.read<FavoriteCubit>();
+                  favoriteCubit.addFavorite(
+                    Favorite.fromMap({
                       "name": widget.meal.name,
                       "imageUrl": widget.meal.imageUrl,
                       "id": widget.meal.id,
@@ -238,11 +238,11 @@ class _MealDetailsState extends State<MealDetails> {
                   );
                   popUpMessage(
                       context: context,
-                      message: 'Added to favorate',
+                      message: 'Added to favorite',
                       background: Colors.green);
                 },
                 child: const Text(
-                  'Add to favorate',
+                  'Add to favorite',
                 ),
               ),
             ),

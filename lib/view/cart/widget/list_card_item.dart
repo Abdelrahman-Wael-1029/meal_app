@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meal_app/common/widget/image.dart';
-import 'package:meal_app/core/value_manager.dart';
-import 'package:meal_app/view/meal_details/screens/meal_details.dart';
-import 'package:meal_app/viewmodel/home/cubit/home_cubit.dart';
+import '../../../common/widget/image.dart';
+import '../../../core/value_manager.dart';
+import '../../meal_details/screens/meal_details.dart';
+import '../../../viewmodel/home/cubit/home_cubit.dart';
 
 Widget listCardItem({
   required BuildContext context,
@@ -15,7 +15,6 @@ Widget listCardItem({
     onTap: ()  {
       var cubit = context.read<HomeCubit>();
        cubit.getMealById(model.id).then((value) {
-        if (value == null) return;
         Navigator.pushNamed(
           context,
           MealDetails.routeName,
