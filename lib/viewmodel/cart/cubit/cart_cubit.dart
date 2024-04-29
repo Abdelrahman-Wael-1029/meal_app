@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meal_app/data/model/cart.dart';
-import 'package:meal_app/repository/cart/cart_repository.dart';
-import 'package:meal_app/viewmodel/cart/cubit/cart_state.dart';
+import '../../../data/model/cart.dart';
+import '../../../repository/cart/cart_repository.dart';
+import 'cart_state.dart';
 
 class CartCubit extends Cubit<CartState> {
   double total = 0;

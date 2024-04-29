@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+
+import '../data/model/category.dart';
 import '../data/model/meal.dart';
 import '../data/model/meal_category.dart';
 import '../view/cart/screen/cart_screen.dart';
 import '../view/category_details/screen/category_details.dart';
 import '../view/favorite/screen/favorite_screen.dart';
+import '../view/home_layout/desktop/desktop_layout.dart';
 import '../view/meal_details/screens/meal_details.dart';
 import '../view/profile/screen/profile_screen.dart';
-import '../data/model/category.dart';
-import '../view/home_layout/desktop/desktop_layout.dart';
-import 'app_messages.dart';
 import '../view/splash/screens/splash_screen.dart';
+import 'app_messages.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {

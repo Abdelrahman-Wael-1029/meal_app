@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+
 import '../../../common/widget/image.dart';
-import '../../meal_details/screens/meal_details.dart';
 import '../../../core/value_manager.dart';
 import '../../../data/model/meal.dart';
+import '../../meal_details/screens/meal_details.dart';
 
 class MealItem extends StatelessWidget {
   final Meal meal;
@@ -22,22 +23,10 @@ class MealItem extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Expanded(
-              child: Stack(
-                alignment: Alignment.topRight,
-                children: [
-                  getImage(
-                    url: meal.imageUrl,
-                    width: double.infinity,
-                    height: double.infinity,
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.favorite_border,
-                      color: Colors.red,
-                    ),
-                  ),
-                ],
+              child: getImage(
+                url: meal.imageUrl,
+                width: double.infinity,
+                height: double.infinity,
               ),
             ),
             SizedBox(

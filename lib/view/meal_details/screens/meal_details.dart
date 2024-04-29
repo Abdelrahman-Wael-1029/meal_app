@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meal_app/common/util/popup_message.dart';
-import 'package:meal_app/viewmodel/cart/cubit/cart_cubit.dart';
+import '../../../common/util/popup_message.dart';
+import '../../../data/model/favorite.dart';
+import '../../../viewmodel/cart/cubit/cart_cubit.dart';
+import '../../../viewmodel/favorite/cubit/favorite_cubit.dart';
 import '../../../common/widget/image.dart';
 import '../../../core/color_manager.dart';
 import '../../../core/value_manager.dart';
@@ -222,25 +224,30 @@ class _MealDetailsState extends State<MealDetails> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50),
-                border: Border.all(
-                  width: 1.0,
-                  color: ColorManager.grey,
-                ),
-                color: ColorManager.white,
-              ),
-              child: IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.favorite_border,
-                  color: ColorManager.red,
+            Expanded(
+              child: ElevatedButton(
+                onPressed: () {
+                  var favoriteCubit = context.read<FavoriteCubit>();
+                  favoriteCubit.addFavorite(
+                    Favorite.fromMap({
+                      "name": widget.meal.name,
+                      "imageUrl": widget.meal.imageUrl,
+                      "id": widget.meal.id,
+                      "price": widget.meal.price,
+                    }),
+                  );
+                  popUpMessage(
+                      context: context,
+                      message: 'Added to favorite',
+                      background: Colors.green);
+                },
+                child: const Text(
+                  'Add to favorite',
                 ),
               ),
             ),
-            const SizedBox(
-              width: 10,
+            SizedBox(
+              width: SizeManager.s8,
             ),
             Expanded(
               child: ElevatedButton(
@@ -255,7 +262,10 @@ class _MealDetailsState extends State<MealDetails> {
                       "quantity": count,
                     }),
                   );
-                  popUpMessage(context: context, message: 'Added to cart', background: Colors.green);
+                  popUpMessage(
+                      context: context,
+                      message: 'Added to cart',
+                      background: Colors.green);
                 },
                 child: const Text(
                   'Add to cart',

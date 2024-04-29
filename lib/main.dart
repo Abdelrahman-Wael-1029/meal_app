@@ -3,9 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:meal_app/data/model/cart.dart';
-import 'package:meal_app/repository/cart/cart_repository.dart';
-import 'package:meal_app/viewmodel/cart/cubit/cart_cubit.dart';
+import 'data/model/cart.dart';
+import 'data/model/favorite.dart';
+import 'repository/cart/cart_repository.dart';
+import 'repository/favorite/favorite_repository.dart';
+import 'viewmodel/cart/cubit/cart_cubit.dart';
+import 'viewmodel/favorite/cubit/favorite_cubit.dart';
 import 'package:path_provider/path_provider.dart';
 import 'bloc_observer.dart';
 import 'data/api/category/category_api.dart';
@@ -23,7 +26,9 @@ void main() async {
   final directory = await getApplicationDocumentsDirectory();
   Hive
     ..init(directory.path)
-    ..registerAdapter(CartAdapter());
+    ..registerAdapter(CartAdapter())
+  ..registerAdapter(FavoriteAdapter());
+
 
   await ScreenUtil.ensureScreenSize();
   Bloc.observer = MyBlocObserver();
@@ -44,6 +49,11 @@ void main() async {
           create: (context) => CartCubit(
             cartRepository: CartRepository(),
           )..getCart(),
+        ),
+        BlocProvider(
+          create: (context) => FavoriteCubit(
+            favoriteRepository: FavoriteRepository(),
+          )..getFavorites(),
         ),
       ],
       child: MyApp(),

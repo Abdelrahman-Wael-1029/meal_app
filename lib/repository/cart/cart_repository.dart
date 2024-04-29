@@ -1,5 +1,5 @@
-import 'package:meal_app/common/local/hive_helper.dart';
-import 'package:meal_app/data/model/cart.dart';
+import '../../common/local/hive_helper.dart';
+import '../../data/model/cart.dart';
 
 class CartRepository{
   Future<void> addCart(Cart data) async {
@@ -9,8 +9,6 @@ class CartRepository{
     if(cart.isNotEmpty){
       for (var item in cart) {
         if(item.id == data.id){
-          print(item);
-          print(data);
           data.quantity = item.quantity + data.quantity;
           await updateCart(cart.indexOf(item), data);
           return;
