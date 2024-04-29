@@ -30,7 +30,6 @@ class HomeScreen extends StatelessWidget {
                   onChanged: (value) {
                     cubit.getMealsBySearch(value);
                   },
-                  
                 ),
                 SizedBox(
                   height: SizeManager.s20,
@@ -55,6 +54,14 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(
                     height: SizeManager.s20,
                   ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text("Dishes of the day",
+                      style: Theme.of(context).textTheme.displayMedium),
+                ),
+                SizedBox(
+                  height: SizeManager.s10,
+                ),
                 if (cubit.meals.isNotEmpty)
                   Wrap(
                     spacing: SizeManager.s16,

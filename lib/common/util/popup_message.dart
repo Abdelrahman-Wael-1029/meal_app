@@ -6,6 +6,7 @@ void popUpMessage(
     SnackBar(
       content: Text(message),
       backgroundColor: background,
+      duration: const Duration(microseconds: 500),
     ),
   );
 }
