@@ -8,7 +8,6 @@ import '../view/category_details/screen/category_details.dart';
 import '../view/favorite/screen/favorite_screen.dart';
 import '../view/home_layout/desktop/desktop_layout.dart';
 import '../view/meal_details/screens/meal_details.dart';
-import '../view/profile/screen/profile_screen.dart';
 import '../view/splash/screens/splash_screen.dart';
 import 'app_messages.dart';
 
@@ -24,8 +23,6 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const FavoriteScreen());
       case CartScreen.routeName:
         return MaterialPageRoute(builder: (_) => const CartScreen());
-      case ProfileScreen.routeName:
-        return MaterialPageRoute(builder: (_) => const ProfileScreen());
       case MealDetails.routeName:
         final args = settings.arguments;
         return MaterialPageRoute(

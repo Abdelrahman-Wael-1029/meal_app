@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../cart/screen/cart_screen.dart';
 import '../../favorite/screen/favorite_screen.dart';
-import '../../profile/screen/profile_screen.dart';
 import '../../../viewmodel/home/cubit/home_cubit.dart';
 import '../../../viewmodel/home/cubit/home_state.dart';
 import '../../home/screen/home_screen.dart';
@@ -28,7 +27,6 @@ class _MobileLayoutState extends State<MobileLayout> {
     const HomeScreen(),
     const FavoriteScreen(),
     const CartScreen(),
-    const ProfileScreen(),
   ];
 
   @override
@@ -59,10 +57,7 @@ class _MobileLayoutState extends State<MobileLayout> {
                 icon: Icon(Icons.shopping_cart),
                 label: 'Cart',
               ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                label: 'Profile',
-              ),
+
             ],
           ),
         );
