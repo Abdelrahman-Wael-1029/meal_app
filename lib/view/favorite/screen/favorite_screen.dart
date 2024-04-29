@@ -23,11 +23,6 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
   @override
   Widget build(BuildContext context) {
     var favoriteCubit = context.read<FavoriteCubit>();
-    if (favoriteCubit.favorites == null) {
-      return const Center(
-        child: CircularProgressIndicator(),
-      );
-    }
     return Padding(
       padding: EdgeInsets.all(PaddingManager.p8),
       child: BlocBuilder<FavoriteCubit, FavoriteState>(

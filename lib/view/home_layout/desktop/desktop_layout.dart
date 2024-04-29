@@ -4,7 +4,6 @@ import '../../../viewmodel/cart/cubit/cart_cubit.dart';
 import '../../../viewmodel/cart/cubit/cart_state.dart';
 import '../../cart/screen/cart_screen.dart';
 import '../../favorite/screen/favorite_screen.dart';
-import '../../profile/screen/profile_screen.dart';
 import '../../../viewmodel/home/cubit/home_cubit.dart';
 import '../../../viewmodel/home/cubit/home_state.dart';
 import '../../home/screen/home_screen.dart';
@@ -30,7 +29,6 @@ class _DesktopLayoutState extends State<DesktopLayout> {
     const HomeScreen(),
     const FavoriteScreen(),
     const CartScreen(),
-    const ProfileScreen(),
   ];
 
   @override
@@ -85,14 +83,6 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                             cubit.changeIndex(index);
                           },
                           icon: const Icon(Icons.shopping_cart),
-                        ),
-                        SideMenuItem(
-                          title: 'profile',
-                          onTap: (index, sideMenuController) {
-                            sideMenu.changePage(index);
-                            cubit.changeIndex(index);
-                          },
-                          icon: const Icon(Icons.person),
                         ),
                       ],
                     ),

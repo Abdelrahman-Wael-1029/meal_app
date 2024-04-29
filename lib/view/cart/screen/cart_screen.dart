@@ -23,11 +23,6 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     var cartCubit = context.read<CartCubit>();
-    if (cartCubit.carts == null) {
-      return const Center(
-        child: CircularProgressIndicator(),
-      );
-    }
     return Padding(
       padding: EdgeInsets.all(PaddingManager.p8),
       child: BlocBuilder<CartCubit, CartState>(
@@ -35,6 +30,11 @@ class _CartScreenState extends State<CartScreen> {
           if (cartCubit.carts == null) {
             return const Center(
               child: CircularProgressIndicator(),
+            );
+          }
+          if (cartCubit.carts!.isEmpty) {
+            return const Center(
+              child: Text('Cart is empty'),
             );
           }
           return Column(
