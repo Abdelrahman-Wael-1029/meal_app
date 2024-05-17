@@ -15,6 +15,9 @@ Widget listCardItem({
     onTap: ()  {
       var cubit = context.read<HomeCubit>();
        cubit.getMealById(model.id).then((value) {
+        if(value.id.isEmpty){
+          return;
+        }
         
         Navigator.pushNamed(
           context,
