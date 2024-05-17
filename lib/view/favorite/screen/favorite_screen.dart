@@ -35,27 +35,23 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
           if(favoriteCubit.favorites!.isEmpty) {
             return const Center(child: Text('No favorites yet'),);
           }
-          return Column(
-            children: [
-              ListView.separated(
-                shrinkWrap: true,
-                separatorBuilder: (context, index) => SizedBox(
-                  height: SizeManager.s8,
-                ),
-                itemCount: favoriteCubit.favorites!.length,
-                itemBuilder: (context, index) {
-                  var favorite = favoriteCubit.favorites![index];
-                  return listCardItem(
-                    context: context,
-                    model: favorite,
-                    onDelete: () {
-                      favoriteCubit.deleteFavorite(index);
-                      setState(() {});
-                    },
-                  );
+          return ListView.separated(
+            shrinkWrap: true,
+            separatorBuilder: (context, index) => SizedBox(
+              height: SizeManager.s8,
+            ),
+            itemCount: favoriteCubit.favorites!.length,
+            itemBuilder: (context, index) {
+              var favorite = favoriteCubit.favorites![index];
+              return listCardItem(
+                context: context,
+                model: favorite,
+                onDelete: () {
+                  favoriteCubit.deleteFavorite(index);
+                  setState(() {});
                 },
-              ),
-            ],
+              );
+            },
           );
         },
       ),
